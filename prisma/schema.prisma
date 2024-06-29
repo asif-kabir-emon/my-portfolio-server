@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String  @id @default(uuid()) @map("_id")
+  email    String  @unique
+  name     String?
+  password String
+
+  @@map("users")
+}
+
+model Education {
+  id           String @id @default(uuid()) @map("_id")
+  institution  String
+  subject      String
+  location     String
+  startingYear String
+  passingYear  String
+  cgpa         String
+
+  @@map("educations")
+}
+
+model Experience {
+  id           String @id @default(uuid()) @map("_id")
+  company      String
+  position     String
+  mode         String
+  location     String
+  startingMonth String
+  startingYear String
+  endingMonth  String
+  endingYear   String
+  duration     String
+  description  String
+
+  @@map("experiences")
+}
