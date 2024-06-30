@@ -8,38 +8,55 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(uuid()) @map("_id")
-  email    String  @unique
-  name     String?
-  password String
+  id        String   @id @default(uuid()) @map("_id")
+  email     String   @unique
+  name      String?
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("users")
 }
 
 model Education {
-  id           String @id @default(uuid()) @map("_id")
+  id           String   @id @default(uuid()) @map("_id")
   institution  String
   subject      String
   location     String
   startingYear String
   passingYear  String
   cgpa         String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
   @@map("educations")
 }
 
 model Experience {
-  id           String @id @default(uuid()) @map("_id")
-  company      String
-  position     String
-  mode         String
-  location     String
+  id            String   @id @default(uuid()) @map("_id")
+  company       String
+  position      String
+  mode          String
+  location      String
   startingMonth String
-  startingYear String
-  endingMonth  String
-  endingYear   String
-  duration     String
-  description  String
+  startingYear  String
+  endingMonth   String
+  endingYear    String
+  duration      String
+  description   String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 
   @@map("experiences")
+}
+
+model Blog {
+  id        String   @id @default(uuid()) @map("_id")
+  imageUrl  String
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("blogs")
 }

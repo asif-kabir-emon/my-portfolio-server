@@ -7,6 +7,8 @@ import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import { EducationModule } from './education/education.module';
 import { ExperienceModule } from './experience/experience.module';
+import { BlogModule } from './blog/blog.module';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { ExperienceModule } from './experience/experience.module';
     PrismaModule,
     EducationModule,
     ExperienceModule,
+    BlogModule,
+    CloudinaryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
