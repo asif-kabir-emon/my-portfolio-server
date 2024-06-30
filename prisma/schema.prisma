@@ -18,6 +18,20 @@ model User {
   @@map("users")
 }
 
+model Profile {
+  id          String   @id @default(uuid()) @map("_id")
+  name        String
+  image       String?
+  profession  String
+  location    String
+  about       String
+  resumeUrl   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("profiles")
+}
+
 model Education {
   id           String   @id @default(uuid()) @map("_id")
   institution  String

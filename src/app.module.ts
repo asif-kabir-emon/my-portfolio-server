@@ -12,6 +12,7 @@ import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { SkillModule } from './skill/skill.module';
 import { ProjectModule } from './project/project.module';
 import { ContactModule } from './contact/contact.module';
+import { ProfileModule } from './profile/profile.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { ContactModule } from './contact/contact.module';
     SkillModule,
     ProjectModule,
     ContactModule,
+    ProfileModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -59,7 +59,7 @@ export class AuthService {
       throw new ForbiddenException('Invalid Credentials.');
     }
 
-    const jwtPayload = { email: userData.email, sub: userData.id };
+    const jwtPayload = { email: userData.email, id: userData.id };
     const token = this.jwt.sign(jwtPayload, {
       expiresIn: '1h',
       secret: this.config.get<string>('JWT_SECRET'),
