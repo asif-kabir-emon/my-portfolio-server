@@ -12,9 +12,10 @@ async function bootstrap() {
       'https://my-portfolio-client-theta.vercel.app',
       'https://asif-kabir.com',
     ],
-    // methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     credentials: true,
   });
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
