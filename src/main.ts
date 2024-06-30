@@ -8,8 +8,9 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
-      'http://localhost:3000/',
-      'https://my-portfolio-client-theta.vercel.app/',
+      'http://localhost:3000',
+      'https://my-portfolio-client-theta.vercel.app',
+      'https://asif-kabir.com',
     ],
     // methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     credentials: true,
