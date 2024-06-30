@@ -11,6 +11,7 @@ import { BlogModule } from './blog/blog.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { SkillModule } from './skill/skill.module';
 import { ProjectModule } from './project/project.module';
+import { ContactModule } from './contact/contact.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { ProjectModule } from './project/project.module';
     CloudinaryModule,
     SkillModule,
     ProjectModule,
+    ContactModule,
   ],
   controllers: [AppController],
   providers: [AppService],
