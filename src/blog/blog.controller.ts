@@ -13,7 +13,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { BlogService } from './blog.service';
-import { JwtGuard } from 'src/auth/auth.guard';
+import { JwtGuard } from 'src/auth/guard/auth.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('blog')

@@ -11,7 +11,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ExperienceService } from './experience.service';
-import { JwtGuard } from 'src/auth/auth.guard';
+import { JwtGuard } from 'src/auth/guard/auth.guard';
 import { AddExperienceDto } from './dto';
 
 @Controller('experience')

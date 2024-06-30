@@ -11,7 +11,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { SkillService } from './skill.service';
-import { JwtGuard } from 'src/auth/auth.guard';
+import { JwtGuard } from 'src/auth/guard/auth.guard';
 import { AddSkillDto, EditSkillDto } from './dto';
 
 @Controller('skill')

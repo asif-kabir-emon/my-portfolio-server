@@ -1,4 +1,4 @@
-import { JwtGuard } from 'src/auth/auth.guard';
+import { JwtGuard } from 'src/auth/guard/auth.guard';
 import { ProfileService } from './profile.service';
 import {
   Body,

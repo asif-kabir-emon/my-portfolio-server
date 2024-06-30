@@ -9,7 +9,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ContactService } from './contact.service';
-import { JwtGuard } from 'src/auth/auth.guard';
+import { JwtGuard } from 'src/auth/guard/auth.guard';
 import { AddContactDto } from './dto';
 
 @Controller('contact')
