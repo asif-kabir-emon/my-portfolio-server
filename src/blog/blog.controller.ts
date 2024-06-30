@@ -6,6 +6,7 @@ import {
   HttpCode,
   HttpStatus,
   Param,
+  Patch,
   Post,
   UploadedFile,
   UseGuards,
@@ -46,7 +47,7 @@ export class BlogController {
   @UseGuards(JwtGuard)
   @HttpCode(HttpStatus.OK)
   @UseInterceptors(FileInterceptor('file'))
-  @Post(':id')
+  @Patch(':id')
   async updateBlog(
     @Param('id') id: string,
     @UploadedFile() file: Express.Multer.File,

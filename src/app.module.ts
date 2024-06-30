@@ -9,6 +9,7 @@ import { EducationModule } from './education/education.module';
 import { ExperienceModule } from './experience/experience.module';
 import { BlogModule } from './blog/blog.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import { SkillModule } from './skill/skill.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { CloudinaryModule } from './cloudinary/cloudinary.module';
     ExperienceModule,
     BlogModule,
     CloudinaryModule,
+    SkillModule,
   ],
   controllers: [AppController],
   providers: [AppService],
