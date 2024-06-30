@@ -6,7 +6,13 @@ async function bootstrap() {
   const port = process.env.PORT || 4000;
   const app = await NestFactory.create(AppModule);
 
-  app.enableCors({ allowedHeaders: '*', origin: '*', credentials: true });
+  app.enableCors({
+    origin: [
+      'http://localhost:3000',
+      'https://my-portfolio-client-theta.vercel.app',
+    ],
+    credentials: true,
+  });
 
   app.useGlobalPipes(
     new ValidationPipe({
