@@ -34,7 +34,6 @@ export class EducationController {
   @HttpCode(HttpStatus.OK)
   @Get(':id')
   async getEducationalQualificationsById(@Param('id') id: string) {
-    console.log('get all education qualifications');
     return await this.educationService.getEducationalQualificationsById(id);
   }
 
