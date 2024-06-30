@@ -1,18 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { AddBlogDto, EditBlogDto } from './dto';
+import { AddProjectDto, EditProjectDto } from './dto';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @Injectable()
-export class BlogService {
+export class ProjectService {
   constructor(
     private prisma: PrismaService,
     private config: ConfigService,
     private cloudinaryService: CloudinaryService,
   ) {}
 
-  async addBlog(file: Express.Multer.File, data: AddBlogDto) {
+  async addProject(file: Express.Multer.File, dto: AddProjectDto) {
     let imageUrl: string = '';
 
     if (file) {
@@ -23,46 +23,44 @@ export class BlogService {
         console.log('failed to upload image to cloudinary');
       }
     }
-
-    const blogData = await this.prisma.blog.create({
+    const projectData = this.prisma.project.create({
       data: {
-        imageUrl: imageUrl,
-        title: data.title,
-        content: data.content,
+        ...dto,
+        imageUrl,
       },
     });
 
-    return blogData;
+    return projectData;
   }
 
-  async getAllBlogs() {
-    return this.prisma.blog.findMany();
+  async getAllProjects() {
+    return this.prisma.project.findMany();
   }
 
-  async getBlogById(id: string) {
-    return this.prisma.blog.findUnique({
+  async getProjectById(id: string) {
+    return this.prisma.project.findUnique({
       where: {
         id,
       },
     });
   }
 
-  async updateBlog(
-    id: string,
+  async updateProject(
     file: Express.Multer.File | null,
-    data: EditBlogDto,
+    id: string,
+    dto: EditProjectDto,
   ) {
-    const isExist = await this.prisma.blog.findUnique({
+    const isExist = await this.prisma.project.findUnique({
       where: {
         id,
       },
     });
 
     if (!isExist) {
-      throw new Error('Blog not found');
+      throw new Error('Project not found');
     }
 
-    let imageUrl: string = '';
+    let imageUrl: string = isExist.imageUrl;
 
     if (file) {
       try {
@@ -73,26 +71,26 @@ export class BlogService {
       }
     }
 
-    const updatedBlogData = this.prisma.blog.update({
+    const updatedProject = this.prisma.project.update({
       where: {
         id,
       },
       data: {
-        ...data,
-        imageUrl: imageUrl,
+        ...dto,
+        imageUrl,
       },
     });
 
-    return updatedBlogData;
+    return updatedProject;
   }
 
-  async deleteBlog(id: string) {
-    const deletedBlogData = this.prisma.blog.delete({
+  async deleteProject(id: string) {
+    const deletedProjectData = this.prisma.project.delete({
       where: {
         id,
       },
     });
 
-    return deletedBlogData;
+    return deletedProjectData;
   }
 }

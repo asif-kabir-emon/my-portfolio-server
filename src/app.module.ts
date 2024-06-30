@@ -10,6 +10,7 @@ import { ExperienceModule } from './experience/experience.module';
 import { BlogModule } from './blog/blog.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { SkillModule } from './skill/skill.module';
+import { ProjectModule } from './project/project.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { SkillModule } from './skill/skill.module';
     BlogModule,
     CloudinaryModule,
     SkillModule,
+    ProjectModule,
   ],
   controllers: [AppController],
   providers: [AppService],

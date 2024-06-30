@@ -12,55 +12,55 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { BlogService } from './blog.service';
+import { ProjectService } from './project.service';
 import { JwtGuard } from 'src/auth/auth.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
 
-@Controller('blog')
-export class BlogController {
-  constructor(private blogService: BlogService) {}
+@Controller('project')
+export class ProjectController {
+  constructor(private projectService: ProjectService) {}
 
   @UseGuards(JwtGuard)
   @HttpCode(HttpStatus.CREATED)
   @UseInterceptors(FileInterceptor('file'))
   @Post()
-  async addBlog(
+  async addProject(
     @UploadedFile() file: Express.Multer.File,
     @Body('data') body: string,
   ) {
-    const parsedBody = JSON.parse(body) as { title: string; content: string };
-    return this.blogService.addBlog(file, parsedBody);
+    const parsedBody = JSON.parse(body);
+    return this.projectService.addProject(file, parsedBody);
   }
 
   @HttpCode(HttpStatus.OK)
   @Get()
-  async getAllBlogs() {
-    return this.blogService.getAllBlogs();
+  async getAllProjects() {
+    return this.projectService.getAllProjects();
   }
 
   @HttpCode(HttpStatus.OK)
   @Get(':id')
-  async getBlogById(@Param('id') id: string) {
-    return this.blogService.getBlogById(id);
+  async getProjectById(@Param('id') id: string) {
+    return this.projectService.getProjectById(id);
   }
 
   @UseGuards(JwtGuard)
   @HttpCode(HttpStatus.OK)
   @UseInterceptors(FileInterceptor('file'))
   @Patch(':id')
-  async updateBlog(
+  async updateProject(
     @Param('id') id: string,
     @UploadedFile() file: Express.Multer.File,
     @Body('data') body: string,
   ) {
     const parsedBody = JSON.parse(body);
-    return this.blogService.updateBlog(id, file, parsedBody);
+    return this.projectService.updateProject(file, id, parsedBody);
   }
 
   @UseGuards(JwtGuard)
   @HttpCode(HttpStatus.OK)
   @Delete(':id')
-  async deleteBlog(@Param('id') id: string) {
-    return this.blogService.deleteBlog(id);
+  async deleteProject(@Param('id') id: string) {
+    return this.projectService.deleteProject(id);
   }
 }
