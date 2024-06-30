@@ -1,4 +1,4 @@
-import { JwtGuard } from 'src/auth/guard/auth.guard';
+import { JwtGuard } from '../auth/guard/auth.guard';
 import { AddEducationDto, EditEducationDto } from './dto';
 import { EducationService } from './education.service';
 import {
