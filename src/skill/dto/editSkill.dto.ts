@@ -8,4 +8,8 @@ export class EditSkillDto {
   @IsString()
   @IsOptional()
   level?: string;
+
+  @IsString()
+  @IsOptional()
+  category?: string;
 }

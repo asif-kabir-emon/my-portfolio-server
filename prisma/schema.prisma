@@ -79,6 +79,7 @@ model Skill {
   id        String   @id @default(uuid()) @map("_id")
   name      String   @unique
   level     String
+  category  String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -89,6 +90,7 @@ model Project {
   id                  String   @id @default(uuid()) @map("_id")
   imageUrl            String?
   title               String
+  technologies        String?
   description         String?
   liveSiteUrl         String?
   videoUrl            String?

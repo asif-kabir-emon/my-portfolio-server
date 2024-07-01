@@ -16,6 +16,12 @@ export class AddProjectDto {
   description?: string;
 
   @IsString({
+    message: 'Technologies must be a string',
+  })
+  @IsOptional()
+  technologies?: string;
+
+  @IsString({
     message: 'TechStack must be a string',
   })
   @IsOptional()

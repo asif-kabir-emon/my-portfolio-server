@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class AddSkillDto {
   @IsString({
@@ -16,4 +16,10 @@ export class AddSkillDto {
     message: 'Level is required',
   })
   level: string;
+
+  @IsString({
+    message: 'Category must be a string',
+  })
+  @IsOptional()
+  category?: string;
 }

@@ -78,6 +78,16 @@ export class ProfileService {
     const experienceData = await this.prisma.experience.findMany({});
     const blogData = await this.prisma.blog.findMany({});
     const skillData = await this.prisma.skill.findMany({});
+    const groupedSkillData = skillData.reduce(
+      (acc, skill) => {
+        if (!acc[skill.category]) {
+          acc[skill.category] = [];
+        }
+        acc[skill.category].push(skill);
+        return acc;
+      },
+      {} as Record<string, { category: string; name: string }[]>,
+    );
     const projectData = await this.prisma.project.findMany({});
 
     const result = {
@@ -86,7 +96,7 @@ export class ProfileService {
       education: educationData,
       experience: experienceData,
       blog: blogData,
-      skill: skillData,
+      skill: groupedSkillData,
       project: projectData,
     };
 
