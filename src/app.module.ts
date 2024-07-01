@@ -13,6 +13,9 @@ import { SkillModule } from './skill/skill.module';
 import { ProjectModule } from './project/project.module';
 import { ContactModule } from './contact/contact.module';
 import { ProfileModule } from './profile/profile.module';
+import { MailController } from './mail/mail.controller';
+import { MailService } from './mail/mail.service';
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -30,8 +33,9 @@ import { ProfileModule } from './profile/profile.module';
     ProjectModule,
     ContactModule,
     ProfileModule,
+    MailModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, MailController],
+  providers: [AppService, MailService],
 })
 export class AppModule {}
