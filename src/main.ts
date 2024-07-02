@@ -10,6 +10,8 @@ async function bootstrap() {
     origin: [
       'http://localhost:3000',
       'https://my-portfolio-client-theta.vercel.app',
+      'https://www.asif-kabir.com',
+      'https://asif-kabir.netlify.app',
     ],
     credentials: true,
   });
